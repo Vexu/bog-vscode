@@ -2,8 +2,18 @@
     "name": "bog",
     "displayName": "Bog",
     "description": "Language support for Bog",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "Vexu",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Vexu/bog-vscode"
+    },
+    "bugs": {
+        "url": "https://github.com/Vexu/bog-vscode/issues"
+    },
+    "engines": {
+        "vscode": "^1.22.0"
+    },
     "categories": [
         "Programming Languages"
     ],
@@ -23,6 +33,11 @@
                 "language": "bog",
                 "scopeName": "source.bog",
                 "path": "./syntaxes/bog.tmLanguage.json"
+            },
+            {
+                "scopeName": "todo-comment.injection",
+                "injectTo": ["source.bog"],
+                "path": "./syntaxes/comment-injection.json"
             }
         ]
     }
