@@ -1,0 +1,154 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "bog",
+    "scopeName": "source.bog",
+    "fileTypes": [
+      "bog"
+    ],
+    "patterns": [
+      {
+        "include": "#comments"
+      },
+      {
+        "include": "#strings"
+      },
+      {
+        "include": "#keywords"
+      },
+      {
+        "include": "#operators"
+      },
+      {
+        "include": "#numbers"
+      }
+    ],
+    "repository": {
+      "keywords": {
+        "patterns": [
+          {
+            "name": "keyword.storage.bog",
+            "match": "\\b(const|let)\\b"
+          },
+          {
+            "name": "keyword.statement.bog",
+            "match": "\\b(break|return|continue|try|catch)\\b"
+          },
+          {
+            "name": "keyword.conditional.bog",
+            "match": "\\b(if|else|match|and|or)\\b"
+          },
+          {
+            "name": "keyword.repeat.bog",
+            "match": "\\b(while|for)\\b"
+          },
+          {
+            "name": "keyword.constant.bool.bog",
+            "match": "\\b(true|false)\\b"
+          },
+          {
+            "name": "keyword.default.bog",
+            "match": "\\b(fn|error|native|import)\\b"
+          },
+          {
+            "name": "keyword.type.bog",
+            "match": "\\b(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b"
+          },
+          {
+            "name": "keyword.todo.bog",
+            "match": "\\b(TODO,XXX)\\b"
+          }
+        ]
+      },
+      "operators": {
+        "patterns":[
+          {
+            "name": "keyword.operator.comparison.bog",
+            "match": "(\\b(and|or|in)\\b)|(==|!=)"
+          },
+          {
+            "name": "keyword.operator.arithmetic.bog",
+            "match": "(-|\\+|\\*\\*?|/|%)=?"
+          },
+          {
+            "name": "keyword.operator.bitwise.bog",
+            "match": "(<<|>>|!|&|\\^|\\|)=?"
+          },
+          {
+            "name": "keyword.operator.special.bog",
+            "match": "\\b(as|is)\\b"
+          }
+        ]
+      },
+      "comments": {
+        "patterns":[
+          {
+            "name": "comment.line.number-sign.bog",
+            "begin": "#",
+            "end": "$"
+          }
+        ]
+      },
+      "strings": {
+        "patterns":[
+          {
+            "name": "string.quoted.double.bog",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+              {
+                "include": "#stringcontent"
+              }
+            ]
+          },
+          {
+            "name": "string.quoted.single.bog",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+              {
+                "include": "#stringcontent"
+              }
+            ]
+          }
+        ]
+      },
+      "stringcontent": {
+        "patterns": [
+          {
+            "name": "constant.character.escape.bog",
+            "match": "\\\\([nrt'\"\\\\]|(x[0-9a-fA-F]{2})|(u\\{[0-9a-fA-F]+\\}))"
+          },
+          {
+            "name": "invalid.illegal.unrecognized-string-escape.bog",
+            "match": "\\\\."
+  
+          }
+        ]
+      },
+      "numbers": {
+        "patterns": [
+          {
+            "name": "constant.numeric.float.bog",
+            "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+          },
+          {
+            "name": "constant.numeric.decimal.bog",
+            "match": "\\b[0-9][0-9_]*\\b"
+          },
+          {
+            "name": "constant.numeric.hexadecimal.bog",
+            "match": "\\b0x[a-fA-F0-9_]+\\b"
+          },
+          {
+            "name": "constant.numeric.octal.bog",
+            "match": "\\b0o[0-7_]+\\b"
+          },
+          {
+            "name": "constant.numeric.binary.bog",
+            "match": "\\b0b[01_]+\\b"
+          }
+        ]
+      }
+    }
+  }
+  

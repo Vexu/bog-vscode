@@ -1,0 +1,29 @@
+{
+    "name": "bog",
+    "displayName": "Bog",
+    "description": "Language support for Bog",
+    "version": "0.0.1",
+    "publisher": "Vexu",
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "bog",
+                "extensions": [
+                    ".bog",
+                    ".bbog"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "bog",
+                "scopeName": "source.bog",
+                "path": "./syntaxes/bog.tmLanguage.json"
+            }
+        ]
+    }
+}
