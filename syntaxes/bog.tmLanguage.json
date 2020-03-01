@@ -20,18 +20,70 @@
     },
     {
       "include": "#numbers"
+    },
+    {
+      "include": "#support"
     }
   ],
   "repository": {
     "keywords": {
       "patterns": [
         {
-          "name": "keyword.storage.bog",
-          "match": "\\b(const|let)\\b"
+          "name": "meta.declaration.bog",
+          "patterns": [
+            {
+              "match": "(?:\\b(\\S*)\\s*=\\s*)?(\\bfn\\b)\\s*\\((\\S*)\\)",
+              "captures": {
+                "1": {
+                  "name": "entity.name.function.bog"
+                },
+                "2": {
+                  "name": "storage.type.function.bog"
+                },
+                "3": {
+                  "name": "variable.parameter.bog"
+                }
+              }
+            },
+            {
+              "begin": "\\b(const)\\b",
+              "end": "(?==)",
+              "name": "variable.constant.bog",
+              "captures": {
+                "1": {
+                  "name": "storage.type.bog"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            {
+              "begin": "\\b(let)\\b",
+              "end": "(?==)",
+              "name": "variable.readwrite.bog",
+              "captures": {
+                "1": {
+                  "name": "storage.type.bog"
+                }
+              },
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          ]
         },
         {
-          "name": "keyword.statement.bog",
-          "match": "\\b(break|return|continue|try|catch)\\b"
+          "name": "keyword.control.flow.bog",
+          "match": "\\b(break|return|continue)\\b"
+        },
+        {
+          "name": "keyword.control.trycatch.bog",
+          "match": "\\b(try|catch)\\b"
         },
         {
           "name": "keyword.conditional.bog",
@@ -47,15 +99,29 @@
         },
         {
           "name": "keyword.default.bog",
-          "match": "\\b(fn|error|native|import)\\b"
+          "match": "\\b(fn|error|in|as|is)\\b"
         },
         {
-          "name": "keyword.type.bog",
-          "match": "\\b(as|is)\\s+(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b"
+          "match": "\\b(as|is)\\s+(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.type.bog"
+            },
+            "2": {
+              "name": "storage.type.bog"
+            }
+          }
         },
         {
-          "name": "invalid.illegal.invalid-type.bog",
-          "match": "\\b(as|is)\\b\\w*\\b"
+          "match": "\\b(as|is)\\s+(\\S+)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.type.bog"
+            },
+            "2": {
+              "name": "invalid.illegal.invalid-type.bog"
+            }
+          }
         }
       ]
     },
@@ -141,6 +207,14 @@
         {
           "name": "constant.numeric.binary.bog",
           "match": "\\b0b[01_]+\\b"
+        }
+      ]
+    },
+    "support": {
+      "patterns": [
+        {
+          "name": "support.function.native.bog",
+          "match": "\\b(native|import)\\b"
         }
       ]
     }
