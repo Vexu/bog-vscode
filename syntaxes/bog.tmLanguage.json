@@ -13,6 +13,9 @@
       "include": "#strings"
     },
     {
+      "include": "#support"
+    },
+    {
       "include": "#keywords"
     },
     {
@@ -20,62 +23,14 @@
     },
     {
       "include": "#numbers"
-    },
-    {
-      "include": "#support"
     }
   ],
   "repository": {
     "keywords": {
       "patterns": [
         {
-          "name": "meta.declaration.bog",
-          "patterns": [
-            {
-              "match": "(?:\\b(\\S*)\\s*=\\s*)?(\\bfn\\b)\\s*\\((\\S*)\\)",
-              "captures": {
-                "1": {
-                  "name": "entity.name.function.bog"
-                },
-                "2": {
-                  "name": "storage.type.function.bog"
-                },
-                "3": {
-                  "name": "variable.parameter.bog"
-                }
-              }
-            },
-            {
-              "begin": "\\b(const)\\b",
-              "end": "(?==)",
-              "name": "variable.constant.bog",
-              "captures": {
-                "1": {
-                  "name": "storage.type.bog"
-                }
-              },
-              "patterns": [
-                {
-                  "include": "$self"
-                }
-              ]
-            },
-            {
-              "begin": "\\b(let)\\b",
-              "end": "(?==)",
-              "name": "variable.readwrite.bog",
-              "captures": {
-                "1": {
-                  "name": "storage.type.bog"
-                }
-              },
-              "patterns": [
-                {
-                  "include": "$self"
-                }
-              ]
-            }
-          ]
+          "name": "keyword.declaration.bog",
+          "match": "\\b(let|const)\\b"
         },
         {
           "name": "keyword.control.flow.bog",
@@ -86,11 +41,11 @@
           "match": "\\b(try|catch)\\b"
         },
         {
-          "name": "keyword.conditional.bog",
-          "match": "\\b(if|else|match|and|or|not)\\b"
+          "name": "keyword.control.conditional.bog",
+          "match": "\\b(if|else|match)\\b"
         },
         {
-          "name": "keyword.repeat.bog",
+          "name": "keyword.control.repeat.bog",
           "match": "\\b(while|for)\\b"
         },
         {
@@ -98,8 +53,12 @@
           "match": "\\b(true|false)\\b"
         },
         {
+          "name": "keyword.constant.none.bog",
+          "match": "\\B\\(\\)"
+        },
+        {
           "name": "keyword.default.bog",
-          "match": "\\b(fn|error|in|as|is)\\b"
+          "match": "\\b(fn|error|as|is|and|or|in|not)\\b"
         },
         {
           "match": "\\b(as|is)\\s+(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b",
@@ -122,6 +81,18 @@
               "name": "invalid.illegal.invalid-type.bog"
             }
           }
+        },
+        {
+          "name": "entity.name.function.bog",
+          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*=\\s*fn\\b)"
+        },
+        {
+          "name": "entity.name.function.call.bog",
+          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*\\()"
+        },
+        {
+          "name": "variable.bog",
+          "match": "[_$[:alpha:]][_$[:alnum:]]*"
         }
       ]
     },
