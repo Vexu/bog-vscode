@@ -85,7 +85,7 @@
         },
         {
           "name": "entity.name.function.bog",
-          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*=\\s*fn\\b)"
+          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*(=|:)\\s*\\b(fn|native)\\b)"
         },
         {
           "name": "entity.name.function.call.bog",
@@ -168,10 +168,26 @@
       "patterns": [
         {
           "name": "constant.numeric.float.bog",
-          "match": "\\b[0-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+          "match": "\\b[1-9][0-9_]*(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.float.bog",
+          "match": "\\b[0-9]\\.[0-9][0-9_]*([eE][+-]?[0-9_]+)?\\b"
+        },
+        {
+          "name": "invalid.illegal.float.bog",
+          "match": "\\b0[0-9_]+(\\.[0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
         },
         {
           "name": "constant.numeric.decimal.bog",
+          "match": "\\b[1-9][0-9_]*\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.bog",
+          "match": "\\b0\\b"
+        },
+        {
+          "name": "invalid.illegal.octal.bog",
           "match": "\\b[0-9][0-9_]*\\b"
         },
         {
