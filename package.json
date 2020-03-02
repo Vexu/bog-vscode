@@ -33,11 +33,6 @@
                 "language": "bog",
                 "scopeName": "source.bog",
                 "path": "./syntaxes/bog.tmLanguage.json"
-            },
-            {
-                "scopeName": "todo-comment.injection",
-                "injectTo": ["source.bog"],
-                "path": "./syntaxes/comment-injection.json"
             }
         ]
     }

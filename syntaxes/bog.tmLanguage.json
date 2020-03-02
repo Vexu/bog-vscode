@@ -13,9 +13,6 @@
       "include": "#strings"
     },
     {
-      "include": "#support"
-    },
-    {
       "include": "#keywords"
     },
     {
@@ -28,6 +25,28 @@
   "repository": {
     "keywords": {
       "patterns": [
+        {
+          "match": "\\b(as|is)\\s+(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.type.bog"
+            },
+            "2": {
+              "name": "entity.name.type.bog"
+            }
+          }
+        },
+        {
+          "match": "\\b(as|is)\\s+([_$[:alpha:]][_$[:alnum:]]*)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.type.bog"
+            },
+            "2": {
+              "name": "invalid.illegal.type.bog"
+            }
+          }
+        },
         {
           "name": "keyword.declaration.bog",
           "match": "\\b(let|const)\\b"
@@ -49,6 +68,10 @@
           "match": "\\b(while|for)\\b"
         },
         {
+          "name": "keyword.control.builtin.bog",
+          "match": "\\b(native|import)\\b"
+        },
+        {
           "name": "keyword.constant.bool.bog",
           "match": "\\b(true|false)\\b"
         },
@@ -59,28 +82,6 @@
         {
           "name": "keyword.default.bog",
           "match": "\\b(fn|error|as|is|and|or|in|not)\\b"
-        },
-        {
-          "match": "\\b(as|is)\\s+(none|int|num|bool|str|tuple|map|list|error|range|fn)\\b",
-          "captures": {
-            "1": {
-              "name": "keyword.type.bog"
-            },
-            "2": {
-              "name": "storage.type.bog"
-            }
-          }
-        },
-        {
-          "match": "\\b(as|is)\\s+(\\S+)\\b",
-          "captures": {
-            "1": {
-              "name": "keyword.type.bog"
-            },
-            "2": {
-              "name": "invalid.illegal.invalid-type.bog"
-            }
-          }
         },
         {
           "name": "entity.name.function.bog",
@@ -117,7 +118,13 @@
         {
           "name": "comment.line.number-sign.bog",
           "begin": "#",
-          "end": "$"
+          "end": "$",
+          "patterns": [
+            {
+              "match": "\\b(TODO|NOTE|FIXME|XXX)\\b",
+              "name": "keyword.todo.bog"
+            }
+          ]
         }
       ]
     },
@@ -178,14 +185,6 @@
         {
           "name": "constant.numeric.binary.bog",
           "match": "\\b0b[01_]+\\b"
-        }
-      ]
-    },
-    "support": {
-      "patterns": [
-        {
-          "name": "support.function.native.bog",
-          "match": "\\b(native|import)\\b"
         }
       ]
     }
