@@ -84,6 +84,10 @@
           "match": "\\b(fn|error|as|is|and|or|in|not)\\b"
         },
         {
+          "name": "variable.language.this.bog",
+          "match": "\\bthis\\b"
+        },
+        {
           "name": "entity.name.function.bog",
           "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*(=|:)\\s*\\b(fn|native)\\b)"
         },
