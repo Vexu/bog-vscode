@@ -69,7 +69,7 @@
         },
         {
           "name": "keyword.control.builtin.bog",
-          "match": "\\b(native|import)\\b"
+          "match": "\\b(import)\\b"
         },
         {
           "name": "keyword.constant.bool.bog",
@@ -93,7 +93,7 @@
         },
         {
           "name": "entity.name.function.bog",
-          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*(=|:)\\s*\\b(fn|native)\\b)"
+          "match": "[_$[:alpha:]][_$[:alnum:]]*(?=\\s*(=|:)\\s*\\bfn\\b)"
         },
         {
           "name": "entity.name.function.call.bog",
