@@ -49,7 +49,7 @@
         },
         {
           "name": "keyword.declaration.bog",
-          "match": "\\b(let|const)\\b"
+          "match": "\\b(let|mut)\\b"
         },
         {
           "name": "keyword.control.flow.bog",
@@ -76,8 +76,8 @@
           "match": "\\b(true|false)\\b"
         },
         {
-          "name": "keyword.constant.none.bog",
-          "match": "\\B\\(\\)"
+          "name": "keyword.constant.null.bog",
+          "match": "\\bnull\\b"
         },
         {
           "name": "keyword.default.bog",
@@ -118,6 +118,10 @@
         {
           "name": "keyword.operator.bitwise.bog",
           "match": "(<<|>>|!|&|\\^|\\|)=?"
+        },
+        {
+          "name": "keyword.operator.assign.bog",
+          "match": "="
         }
       ]
     },
@@ -139,9 +143,88 @@
     "strings": {
       "patterns": [
         {
+          "begin": "(f)(\"[^\\{\"]*\\{)",
+          "end": "(\\}[^\"]*\")",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.format-string.bog"
+            },
+            "2": {
+              "name": "string.quoted.single.format.bog"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.single.format.bog"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#formatstring"
+            },
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "include": "#operators"
+            }
+          ]
+        },
+        {
+          "begin": "(f)('[^\\{']*\\{)",
+          "end": "(\\}[^']*')",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.format-string.bog"
+            },
+            "2": {
+              "name": "string.quoted.single.format.bog"
+            }
+          },
+          "endCaptures": {
+            "1": {
+              "name": "string.quoted.single.format.bog"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#formatstring"
+            },
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#keywords"
+            },
+            {
+              "include": "#operators"
+            }
+          ]
+        },
+        {
           "name": "string.quoted.double.bog",
-          "begin": "\"",
+          "begin": "(f)?\"",
           "end": "\"",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.format-string.bog"
+            }
+          },
           "patterns": [
             {
               "include": "#stringcontent"
@@ -150,8 +233,13 @@
         },
         {
           "name": "string.quoted.single.bog",
-          "begin": "'",
+          "begin": "(f)?'",
           "end": "'",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.format-string.bog"
+            }
+          },
           "patterns": [
             {
               "include": "#stringcontent"
@@ -169,6 +257,24 @@
         {
           "name": "invalid.illegal.unrecognized-string-escape.bog",
           "match": "\\\\."
+        }
+      ]
+    },
+    "formatstring": {
+      "patterns": [
+        {
+          "name": "string.format.bog",
+          "begin": "\\}",
+          "end": "\\{",
+          "patterns": [
+            {
+              "include": "#stringcontents"
+            },
+            {
+              "name": "constant.character.escape.bog",
+              "match": "({{|}})"
+            }
+          ]
         }
       ]
     },
