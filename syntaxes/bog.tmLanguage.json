@@ -144,18 +144,18 @@
       "patterns": [
         {
           "begin": "(f)(\"[^\\{\"]*\\{)",
-          "end": "(\\}[^\"]*\")",
+          "end": "(\\}[^\"\\{]*\")",
           "beginCaptures": {
             "1": {
               "name": "keyword.format-string.bog"
             },
             "2": {
-              "name": "string.quoted.single.format.bog"
+              "name": "string.quoted.double.format.bog"
             }
           },
           "endCaptures": {
             "1": {
-              "name": "string.quoted.single.format.bog"
+              "name": "string.quoted.double.format.bog"
             }
           },
           "patterns": [
@@ -181,7 +181,7 @@
         },
         {
           "begin": "(f)('[^\\{']*\\{)",
-          "end": "(\\}[^']*')",
+          "end": "(\\}[^'\\{]*')",
           "beginCaptures": {
             "1": {
               "name": "keyword.format-string.bog"
