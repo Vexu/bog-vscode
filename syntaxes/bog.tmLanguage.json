@@ -281,30 +281,8 @@
     "numbers": {
       "patterns": [
         {
-          "match": "(\\b[1-9][0-9_]*)((?:[\\.,][0-9][0-9_]*)(?:[eE][+-]?[0-9_]+)?,[_$[:alnum:]]*)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.float.bog"
-            },
-            "2": {
-              "name": "invalid.illegal.float.bog"
-            }
-          }
-        },
-        {
           "name": "constant.numeric.float.bog",
           "match": "\\b[1-9][0-9_]*([\\.,][0-9][0-9_]*)?([eE][+-]?[0-9_]+)?\\b"
-        },
-        {
-          "match": "(\\b[0-9])([\\.,][0-9][0-9_]*(?:[eE][+-]?[0-9_]+)?,[_$[:alnum:]]*)",
-          "captures": {
-            "1": {
-              "name": "constant.numeric.float.bog"
-            },
-            "2": {
-              "name": "invalid.illegal.float.bog"
-            }
-          }
         },
         {
           "name": "constant.numeric.float.bog",
