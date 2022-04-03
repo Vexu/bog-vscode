@@ -61,7 +61,7 @@
         },
         {
           "name": "keyword.control.trycatch.bog",
-          "match": "\\b(try|catch)\\b"
+          "match": "\\b(try|catch|throw)\\b"
         },
         {
           "name": "keyword.control.conditional.bog",
